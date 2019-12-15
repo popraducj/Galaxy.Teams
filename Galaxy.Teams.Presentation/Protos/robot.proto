@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Galaxy.Teams.Presentation";
+
+package Robot;
+
+service Robot {
+  rpc UpdateRobot (RobotRequest) returns (RobotReply);
+}
+
+// The request message containing the user's name.
+message RobotRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message RobotReply {
+  string message = 1;
+}

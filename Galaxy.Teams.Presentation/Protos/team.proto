@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Galaxy.Teams.Presentation";
+
+package Team;
+
+service Team {
+  rpc UpdateTeam (TeamRequest) returns (TeamReply);
+}
+
+// The request message containing the user's name.
+message TeamRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message TeamReply {
+  string message = 1;
+}

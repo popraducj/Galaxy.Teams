@@ -7,7 +7,7 @@ namespace Galaxy.Teams.Presentation.Ioc
 {
     public static class RegisterDatabase
     {
-        public static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddDatabaseContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<TeamDbContext>(options =>
                 options.UseMySql(

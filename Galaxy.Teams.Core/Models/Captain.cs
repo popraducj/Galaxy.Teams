@@ -9,8 +9,9 @@ namespace Galaxy.Teams.Core.Models
     {
         [Key]
         public Guid Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Age { get; set; }
+        public int Age { get; set; }
+        public int UserId { get; set; }
+        public int Expeditions { get; set; }
+        public CaptainStatus Status { get; set; }
     }
 }

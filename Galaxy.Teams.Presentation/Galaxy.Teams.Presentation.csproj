@@ -5,15 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Galaxy.Teams.Core\Galaxy.Teams.Core.csproj" />
-    <ProjectReference Include="..\Galaxy.Teams.Infrastructure\Galaxy.Teams.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.23.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
     <PackageReference Include="NLog" Version="4.6.8" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
   </ItemGroup>
-
+ <ItemGroup>
+   <Protobuf Include="Protos\captain.proto" GrpcServices="Server" />
+   <Protobuf Include="Protos\robot.proto" GrpcServices="Server" />
+   <Protobuf Include="Protos\shuttle.proto" GrpcServices="Server" />
+   <Protobuf Include="Protos\team.proto" GrpcServices="Server" />
+ </ItemGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\Galaxy.Teams.Infrastructure\Galaxy.Teams.Infrastructure.csproj" />
+ </ItemGroup>
 </Project>

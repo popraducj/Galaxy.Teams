@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NLog.Web;
 
 namespace Galaxy.Teams.Presentation
@@ -37,13 +36,14 @@ namespace Galaxy.Teams.Presentation
             }
         }
 
+        // Additional configuration is required to successfully run gRPC on macOS.
+        // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
         public static IHostBuilder CreateWebHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                })
-                .ConfigureLogging((context, builder) => { builder.ClearProviders(); })
-                .UseNLog();
+                    webBuilder.UseUrls("http://*:5004", "https://*:5005")
+                        .UseStartup<Startup>();
+                });
     }
 }

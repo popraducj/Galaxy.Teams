@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Galaxy.Teams.Presentation";
+
+package Shuttle;
+
+service Shuttle {
+
+  rpc UpdateShuttle (ShuttleRequest) returns (ShuttleReply);
+}
+
+// The request message containing the user's name.
+message ShuttleRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message ShuttleReply {
+  string message = 1;
+}

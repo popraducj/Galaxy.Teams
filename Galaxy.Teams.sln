@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Teams.Presentation", "Galaxy.Teams.Presentation\Galaxy.Teams.Presentation.csproj", "{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Teams.Infrastructure", "Galaxy.Teams.Infrastructure\Galaxy.Teams.Infrastructure.csproj", "{85BD8A90-9823-49FD-895E-2BA0ECFB4007}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Teams.Core", "Galaxy.Teams.Core\Galaxy.Teams.Core.csproj", "{5E74E603-93B1-488A-B047-AF00B38D586E}"
@@ -12,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Teams.Infrastructure.Tests", "Galaxy.Teams.Infrastructure.Tests\Galaxy.Teams.Infrastructure.Tests.csproj", "{8D982948-A4C4-49FC-ADA6-EFB223BA0552}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Teams.Core.Tests", "Galaxy.Teams.Core.Tests\Galaxy.Teams.Core.Tests.csproj", "{8159BD5F-1653-4B2C-ABAA-8A0D43280408}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy.Teams.Presentation", "Galaxy.Teams.Presentation\Galaxy.Teams.Presentation.csproj", "{2535E2A5-0776-4318-81FB-B04C2B3EBC56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,18 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Debug|x64.Build.0 = Debug|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Debug|x86.Build.0 = Debug|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Release|x64.ActiveCfg = Release|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Release|x64.Build.0 = Release|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Release|x86.ActiveCfg = Release|Any CPU
-		{F761D9B9-616D-40FA-BD42-DCDAEC1E3DF1}.Release|x86.Build.0 = Release|Any CPU
 		{85BD8A90-9823-49FD-895E-2BA0ECFB4007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85BD8A90-9823-49FD-895E-2BA0ECFB4007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85BD8A90-9823-49FD-895E-2BA0ECFB4007}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -86,5 +74,17 @@ Global
 		{8159BD5F-1653-4B2C-ABAA-8A0D43280408}.Release|x64.Build.0 = Release|Any CPU
 		{8159BD5F-1653-4B2C-ABAA-8A0D43280408}.Release|x86.ActiveCfg = Release|Any CPU
 		{8159BD5F-1653-4B2C-ABAA-8A0D43280408}.Release|x86.Build.0 = Release|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Debug|x64.Build.0 = Debug|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Debug|x86.Build.0 = Debug|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Release|x64.ActiveCfg = Release|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Release|x64.Build.0 = Release|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Release|x86.ActiveCfg = Release|Any CPU
+		{2535E2A5-0776-4318-81FB-B04C2B3EBC56}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

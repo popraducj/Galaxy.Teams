@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Galaxy.Teams.Presentation";
+
+package Captain;
+
+service Captain {
+  rpc UpdateCaptain (CaptainRequest) returns (CaptainReply);
+}
+
+// The request message containing the user's name.
+message CaptainRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message CaptainReply {
+  string message = 1;
+}
