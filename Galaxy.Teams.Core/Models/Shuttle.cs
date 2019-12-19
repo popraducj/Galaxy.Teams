@@ -5,10 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Galaxy.Teams.Core.Models
 {
     [Table("Shuttles")]
-    public class Shuttle
+    public class Shuttle : Entity
     {
-        [Key]
-        public Guid Id { get; set; }
         [Column(TypeName = "varchar(256)")]
         public string Name { get; set; }
         public int MaxSpeed { get; set; }
@@ -20,5 +18,6 @@ namespace Galaxy.Teams.Core.Models
         public float FuelConsumption { get; set; }
         public int FuelTankLimit { get; set; }
         public DateTime NextRevision { get; set; }
+        public ShuttleStatus Status { get; set; }
     }
 }

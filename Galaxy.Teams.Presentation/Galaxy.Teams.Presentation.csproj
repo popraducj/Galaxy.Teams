@@ -15,8 +15,18 @@
    <Protobuf Include="Protos\robot.proto" GrpcServices="Server" />
    <Protobuf Include="Protos\shuttle.proto" GrpcServices="Server" />
    <Protobuf Include="Protos\team.proto" GrpcServices="Server" />
+   <Protobuf Include="Protos\user.proto">
+     <GrpcServices>Client</GrpcServices>
+     <Access>Public</Access>
+     <ProtoCompile>True</ProtoCompile>
+     <ProtoRoot></ProtoRoot>
+     <CompileOutputs>True</CompileOutputs>
+     <OutputDir>obj\Debug\netcoreapp3.0\</OutputDir>
+     <Generator>MSBuild:Compile</Generator>
+   </Protobuf>
  </ItemGroup>
  <ItemGroup>
+   <ProjectReference Include="..\Galaxy.Teams.Core\Galaxy.Teams.Core.csproj" />
    <ProjectReference Include="..\Galaxy.Teams.Infrastructure\Galaxy.Teams.Infrastructure.csproj" />
  </ItemGroup>
 </Project>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Galaxy.Teams.Core.Intefaces;
+using Galaxy.Teams.Infrastructure;
 using Galaxy.Teams.Presentation.Ioc;
 using Galaxy.Teams.Presentation.Services;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +28,8 @@ namespace Galaxy.Teams.Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDatabaseContext(Configuration);
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddServices();
             services.AddGrpc();
         }
 

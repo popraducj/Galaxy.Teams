@@ -5,13 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Galaxy.Teams.Core.Models
 {
     [Table("Captains")]
-    public class Captain
+    public class Captain : Entity
     {
-        [Key]
-        public Guid Id { get; set; }
+        
         public int Age { get; set; }
         public int UserId { get; set; }
         public int Expeditions { get; set; }
+        [NotMapped]
+        public string Username { get; set; }
         public CaptainStatus Status { get; set; }
     }
 }

@@ -2,9 +2,9 @@
 {
     public enum CaptainStatus
     {
+        Unassigned,
+        Retired,
         Unknown,
-        HasTeam,
-        Free,
-        Retired
+        Deleted
     }
 }
