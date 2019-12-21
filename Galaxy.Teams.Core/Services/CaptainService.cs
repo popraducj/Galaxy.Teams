@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Galaxy.Teams.Core.Intefaces;
@@ -29,10 +30,47 @@ namespace Galaxy.Teams.Core.Services
                 };
             }
 
+            captain.UpdatedAt = captain.CreatedAt = DateTime.UtcNow;
             await _repository.AddAsync(captain);
             return new ActionResponse();
         }
 
+        public async Task<ActionResponse> UpdateAsync(Captain captain)
+        {
+            var dbCaptain = _repository.GetById(captain.Id);
+            if (dbCaptain == null)
+            {
+                return  new ActionResponse
+                {
+                    Success = false,
+                    Errors = new List<ActionError>
+                    {
+                        new ActionError
+                        {
+                            Code = "NotFound",
+                            Description = "Captain was not found"
+                        }
+                    }
+                };
+            }
+
+            dbCaptain.UpdatedAt = DateTime.UtcNow;
+            dbCaptain.Status = captain.Status;
+            await _repository.UpdateAsync(dbCaptain);
+            return new ActionResponse{Success = true};
+        }
+
+        public async Task<List<Captain>> GetAllAsync()
+        { 
+            var captains = await _repository.GetAsync(x=> x.Status != CaptainStatus.Deleted, x => x.OrderByDescending(y => y.UpdatedAt));
+            return captains.ToList();
+        }
+
+        public Captain GetById(Guid id)
+        {
+            return _repository.GetById(id);
+        }
+        
         private async Task<List<ActionError>> ValidateCaptain(Captain captain)
         {
             var errors = new List<ActionError>();
@@ -45,7 +83,7 @@ namespace Galaxy.Teams.Core.Services
                 });
             }
 
-            var userId = await _userGrpcService.VerifyIfUserExistsAsync(captain.Username);
+            var (userId, name) = await _userGrpcService.GetUserAsync(captain.Username);
             if (userId < 0)
             {
                 errors.Add(new ActionError
@@ -57,6 +95,7 @@ namespace Galaxy.Teams.Core.Services
             else
             {
                 captain.UserId = userId;
+                captain.Name = name;
             }
 
             return errors;

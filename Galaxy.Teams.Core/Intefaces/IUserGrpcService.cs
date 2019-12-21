@@ -4,6 +4,6 @@ namespace Galaxy.Teams.Core.Intefaces
 {
     public interface IUserGrpcService
     {
-        Task<int> VerifyIfUserExistsAsync(string username);
+        Task<(int, string)> GetUserAsync(string username);
     }
 }

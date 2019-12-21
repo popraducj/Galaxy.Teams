@@ -41,7 +41,7 @@ namespace Galaxy.Teams.Infrastructure
             }
 
 
-            return orderBy != null ? await (query).ToListAsync() : await query.ToListAsync();
+            return orderBy != null ? await orderBy(query).ToListAsync() : await query.ToListAsync();
         }
 
         public virtual TEntity GetById(Guid id)

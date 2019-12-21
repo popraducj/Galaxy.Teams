@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Galaxy.Auth.Grpc;
 using Galaxy.Teams.Core.Intefaces;
 using Grpc.Net.Client;
@@ -14,13 +15,13 @@ namespace Galaxy.Teams.Presentation.Services.Users
             _client = new User.UserClient(channel);
         }
         
-        public async Task<int> VerifyIfUserExistsAsync(string username)
+        public async Task<(int, string)> GetUserAsync(string username)
         {
-            var replay = await _client.VerifyUserAsync(new UserRequest
+            var replay = await _client.GetUserAsync(new UserRequest
             {
                 Username = username
             });
-            return replay.Id;
+            return (replay.Id, replay.Name);
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Galaxy.Teams.Core.Intefaces;
 using Galaxy.Teams.Core.Models;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 
@@ -26,6 +28,40 @@ namespace Galaxy.Teams.Presentation.Services
             });
 
             return ToCaptainActionReplay(result);
+        }
+
+        public override async Task<CaptainActionReplay> UpdateCaptain(UpdateCaptainRequest request, ServerCallContext context)
+        {
+            var result = await _captainService.UpdateAsync(new Core.Models.Captain
+            {
+                Id = Guid.Parse(request.Id),
+                Status = (CaptainStatus) request.Status
+            });
+            return ToCaptainActionReplay(result);
+        }
+
+        public override async Task GetAll(Empty request, IServerStreamWriter<CaptainReplay> responseStream, ServerCallContext context)
+        {
+            var results = await _captainService.GetAllAsync();
+             results.ForEach(async captain => { await responseStream.WriteAsync(ToCaptainReplay(captain)); });
+        }
+
+        public override Task<CaptainReplay> GetById(CaptainIdRequest request, ServerCallContext context)
+        {
+            var captain =  _captainService.GetById(Guid.Parse(request.Id));
+            return Task.FromResult(ToCaptainReplay(captain));
+        }
+
+        private static CaptainReplay ToCaptainReplay(Core.Models.Captain captain)
+        {
+            return  new CaptainReplay
+            {
+                Id = captain.Id.ToString(),
+                Expeditions = captain.Expeditions,
+                Name = captain.Name,
+                Status = (int) captain.Status,    
+                Age = captain.Age
+            };
         }
 
 

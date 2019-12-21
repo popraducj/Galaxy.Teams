@@ -25,6 +25,7 @@ namespace Galaxy.Teams.Infrastructure
             base.OnModelCreating(modelBuilder);
         }
 
+
         private static void AddConvertedProperties(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Team>().Property(x => x.Robots).HasConversion(
