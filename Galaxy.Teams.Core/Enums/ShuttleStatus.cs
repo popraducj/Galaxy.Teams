@@ -2,10 +2,11 @@
 {
     public enum ShuttleStatus
     {
-        UnAssigned,
+        Unassigned,
+        Assigned,
         Broken,
         Off,
         On,
-        Deleted,
+        Deleted
     }
 }

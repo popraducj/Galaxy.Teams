@@ -1,0 +1,43 @@
+﻿using System;
+using Galaxy.Robots.Presentation;
+using Galaxy.Teams.Core.Enums;
+using Robot = Galaxy.Teams.Core.Models.Robot;
+
+namespace Galaxy.Teams.Presentation.Helpers
+{
+    public static class RobotExtensions
+    {
+        public static RobotModel ToRobotModel(this Robot robot)
+        {
+            return new RobotModel
+            {
+                Id = robot.Id.ToString(),
+                Name = robot.Name ?? string.Empty,
+                Status = (int) robot.Status,
+                Manufacturer = robot.Manufacturer ?? string.Empty,
+                Model = robot.Model ?? string.Empty,
+                Year = robot.Year,
+                NextRevision = robot.NextRevision.ToString("s"),
+                TrustWorthyPercentage = robot.TrustWorthyPercentage,
+                FuelConsumptionPerDay = robot.FuelConsumptionPerDay,
+                UnitsCoveredInADay = robot.UnitsCoveredInADay
+            };
+        }
+        public static Robot ToRobot(this RobotModel robot)
+        {
+            return new Robot
+            {
+                Id = Guid.Parse(robot.Id),
+                Name = robot.Name,
+                Status = (RobotStatus) robot.Status,
+                Manufacturer = robot.Manufacturer,
+                Model = robot.Model,
+                Year = robot.Year,
+                NextRevision = DateTime.Parse(robot.NextRevision),
+                TrustWorthyPercentage = robot.TrustWorthyPercentage,
+                FuelConsumptionPerDay = robot.FuelConsumptionPerDay,
+                UnitsCoveredInADay = robot.UnitsCoveredInADay
+            };
+        }
+    }
+}

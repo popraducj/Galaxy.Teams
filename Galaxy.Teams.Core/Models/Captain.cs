@@ -11,7 +11,7 @@ namespace Galaxy.Teams.Core.Models
         public int Age { get; set; }
         public int UserId { get; set; }
         public int Expeditions { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         [NotMapped]
         public string Username { get; set; }
         public CaptainStatus Status { get; set; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Galaxy.Teams.Core.Intefaces;
+﻿using Galaxy.Teams.Core.Intefaces;
 using Galaxy.Teams.Infrastructure;
 using Galaxy.Teams.Presentation.Ioc;
 using Galaxy.Teams.Presentation.Services;

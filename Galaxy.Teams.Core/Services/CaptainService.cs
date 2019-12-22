@@ -7,7 +7,7 @@ using Galaxy.Teams.Core.Models;
 
 namespace Galaxy.Teams.Core.Services
 {
-    public class CaptainService : ICaptainService
+    public class CaptainService : IService<Captain>
     {
         private readonly IRepository<Captain> _repository;
         private readonly IUserGrpcService _userGrpcService;
@@ -18,9 +18,9 @@ namespace Galaxy.Teams.Core.Services
             _userGrpcService = userGrpcService;
         }
 
-        public async Task<ActionResponse> AddAsync(Captain captain)
+        public async Task<ActionResponse> AddAsync(Captain model)
         {
-            var errors = await ValidateCaptain(captain);
+            var errors = await ValidateCaptain(model);
             if (errors.Any())
             {
                 return new ActionResponse
@@ -30,34 +30,24 @@ namespace Galaxy.Teams.Core.Services
                 };
             }
 
-            captain.UpdatedAt = captain.CreatedAt = DateTime.UtcNow;
-            await _repository.AddAsync(captain);
-            return new ActionResponse();
+            model.UpdatedAt = model.CreatedAt = DateTime.UtcNow;
+            return await _repository.AddAsync(model);
         }
 
-        public async Task<ActionResponse> UpdateAsync(Captain captain)
+        public async Task<ActionResponse> UpdateAsync(Captain model)
         {
-            var dbCaptain = _repository.GetById(captain.Id);
-            if (dbCaptain == null)
+            var errors = await ValidateCaptain(model);
+            if (errors.Any())
             {
-                return  new ActionResponse
+                return new ActionResponse
                 {
-                    Success = false,
-                    Errors = new List<ActionError>
-                    {
-                        new ActionError
-                        {
-                            Code = "NotFound",
-                            Description = "Captain was not found"
-                        }
-                    }
+                    Errors = errors,
+                    Success = false
                 };
             }
-
-            dbCaptain.UpdatedAt = DateTime.UtcNow;
-            dbCaptain.Status = captain.Status;
-            await _repository.UpdateAsync(dbCaptain);
-            return new ActionResponse{Success = true};
+            
+            model.UpdatedAt = DateTime.UtcNow;
+            return await _repository.UpdateAsync(model);
         }
 
         public async Task<List<Captain>> GetAllAsync()
@@ -96,6 +86,16 @@ namespace Galaxy.Teams.Core.Services
             {
                 captain.UserId = userId;
                 captain.Name = name;
+            }
+
+            var sameUser = _repository.GetAsync(x => x.UserId == userId);
+            if (sameUser != null)
+            {
+                errors.Add(new ActionError
+                {
+                    Code = "SameUser",
+                    Description = "There is already a captain for this user"
+                });
             }
 
             return errors;

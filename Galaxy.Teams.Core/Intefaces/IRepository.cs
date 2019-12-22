@@ -14,7 +14,7 @@ namespace Galaxy.Teams.Core.Intefaces
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, 
             string includeProperties = "");
         TEntity GetById(Guid id);
-        Task AddAsync(TEntity entity);
-        Task UpdateAsync(TEntity entityToUpdate);
+        Task<ActionResponse> AddAsync(TEntity entity);
+        Task<ActionResponse> UpdateAsync(TEntity entityToUpdate);
     }
 }

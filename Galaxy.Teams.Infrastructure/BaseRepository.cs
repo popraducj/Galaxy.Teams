@@ -49,16 +49,33 @@ namespace Galaxy.Teams.Infrastructure
             return _dbSet.Find(id);
         }
 
-        public virtual async Task AddAsync(TEntity entity)
+        public virtual async Task<ActionResponse> AddAsync(TEntity entity)
         {
-            await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            try
+            {
+               // throw new Exception();
+                await _dbSet.AddAsync(entity);
+                await _context.SaveChangesAsync();
+                return new ActionResponse();
+            }
+            catch
+            {
+                return ActionResponse.FailedToAdd();
+            }
         }
-        public virtual async Task UpdateAsync(TEntity entityToUpdate)
+        public virtual async Task<ActionResponse> UpdateAsync(TEntity entityToUpdate)
         {
-            _dbSet.Attach(entityToUpdate);
-            _context.Entry(entityToUpdate).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            try
+            {
+                _dbSet.Attach(entityToUpdate);
+                _context.Entry(entityToUpdate).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return new ActionResponse();
+            }
+            catch
+            {
+                return ActionResponse.FailedToUpdate();
+            }
         }
     }
 }

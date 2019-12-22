@@ -15,7 +15,7 @@ namespace Galaxy.Teams.Core.Models
         [Column(TypeName = "varchar(256)")]
         public string Model { get; set; }
         public int Year { get; set; }
-        public float FuelConsumption { get; set; }
+        public int FuelConsumption { get; set; }
         public int FuelTankLimit { get; set; }
         public DateTime NextRevision { get; set; }
         public ShuttleStatus Status { get; set; }

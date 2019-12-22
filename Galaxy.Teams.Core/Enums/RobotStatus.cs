@@ -3,6 +3,7 @@
     public enum RobotStatus
     {
         Unassigned,
+        Assigned,
         Off,
         On,
         Exploring,

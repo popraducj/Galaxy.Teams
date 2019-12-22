@@ -15,6 +15,7 @@
    <Protobuf Include="Protos\robot.proto" GrpcServices="Server" />
    <Protobuf Include="Protos\shuttle.proto" GrpcServices="Server" />
    <Protobuf Include="Protos\team.proto" GrpcServices="Server" />
+   <Protobuf Include="Protos\commonModels.proto" GrpcServices="Server" />
    <Protobuf Include="Protos\user.proto">
      <GrpcServices>Client</GrpcServices>
      <Access>Public</Access>
