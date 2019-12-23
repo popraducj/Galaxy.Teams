@@ -9,7 +9,7 @@ namespace Galaxy.Teams.Core.Models
             Success = true;
             Errors = new List<ActionError>();
         }
-        public bool Success { get; set; } = true;
+        public bool Success { get; set; }
         public List<ActionError> Errors { get; set; }
 
         public static ActionResponse FailedToAdd()

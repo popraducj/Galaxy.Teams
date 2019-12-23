@@ -9,6 +9,7 @@ namespace Galaxy.Teams.Core.Intefaces
     {
         Task<ActionResponse> AddAsync(T model);
         Task<ActionResponse> UpdateAsync(T model);
+        Task<ActionResponse> UpdateStatusAsync(T model);
         Task<List<T>> GetAllAsync();
         T GetById(Guid id);
     }

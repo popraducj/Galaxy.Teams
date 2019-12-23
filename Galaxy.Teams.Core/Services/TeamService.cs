@@ -56,6 +56,14 @@ namespace Galaxy.Teams.Core.Services
             return await _repository.UpdateAsync(model);
         }
 
+        public async Task<ActionResponse> UpdateStatusAsync(Team model)
+        {
+            var team = _repository.GetById(model.Id);
+            team.Status = model.Status;
+            return await _repository.UpdateAsync(team);
+        }
+
+
         public async Task<List<Team>> GetAllAsync()
         {
             var teams = await _repository.GetAsync(x => x.Status != TeamStatus.Deleted,
@@ -82,7 +90,7 @@ namespace Galaxy.Teams.Core.Services
 
             foreach (var dbRobot in model.Robots.Select(robot => _robotService.GetById(robot)))
             {
-                dbRobot.Status = RobotStatus.Exploring;
+                dbRobot.Status = RobotStatus.Assigned;
                 await _robotService.UpdateAsync(dbRobot);
             }
         }

@@ -27,6 +27,13 @@ namespace Galaxy.Teams.Core.Services
             return await _repository.UpdateAsync(model);
         }
 
+        public async Task<ActionResponse> UpdateStatusAsync(Shuttle model)
+        {
+            var shuttle = _repository.GetById(model.Id);
+            shuttle.Status = model.Status;
+            return await _repository.UpdateAsync(model);
+        }
+
         public async Task<List<Shuttle>> GetAllAsync()
         { 
             var shuttles = await _repository.GetAsync(x=> x.Status != ShuttleStatus.Deleted, x => x.OrderByDescending(y => y.UpdatedAt));

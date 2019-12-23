@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Galaxy.Auth.Grpc;
+using Galaxy.Auth;
 using Galaxy.Teams.Core.Intefaces;
 using Grpc.Net.Client;
 

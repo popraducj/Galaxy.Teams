@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Galaxy.Teams.Core.Enums;
 
 namespace Galaxy.Teams.Presentation.Helpers
@@ -9,6 +8,7 @@ namespace Galaxy.Teams.Presentation.Helpers
     {
         public static TeamModel ToTeamModel(this Core.Models.Team team)
         {
+            if(team == null) return new TeamModel();
             var  response = new TeamModel
             {
                 Id = team.Id.ToString(),
@@ -22,6 +22,8 @@ namespace Galaxy.Teams.Presentation.Helpers
         }
         public static Core.Models.Team ToTeam(this TeamModel team)
         {
+            //team.CaptainId = string.IsNullOrEmpty(team.CaptainId) ? Guid.Empty.ToString() : team.CaptainId;
+            //team.ShuttleId = string.IsNullOrEmpty(team.ShuttleId) ? Guid.Empty.ToString() : team.ShuttleId;
             var response = new Core.Models.Team
             {
                 Id = Guid.Parse(team.Id),

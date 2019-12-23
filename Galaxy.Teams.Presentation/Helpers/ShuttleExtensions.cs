@@ -1,5 +1,5 @@
 ﻿using System;
-using Galaxy.Shuttles.Presentation;
+using Galaxy.Shuttles;
 using Galaxy.Teams.Core.Models;
 using Shuttle = Galaxy.Teams.Core.Models.Shuttle;
 
@@ -9,6 +9,7 @@ namespace Galaxy.Teams.Presentation.Helpers
     {
         public static ShuttleModel ToShuttleModel(this Shuttle shuttle)
         {
+            if(shuttle == null) return new ShuttleModel();
             return new ShuttleModel
             {
                 Id = shuttle.Id.ToString(),

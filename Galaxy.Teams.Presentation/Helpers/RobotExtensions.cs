@@ -1,5 +1,5 @@
 ﻿using System;
-using Galaxy.Robots.Presentation;
+using Galaxy.Robots;
 using Galaxy.Teams.Core.Enums;
 using Robot = Galaxy.Teams.Core.Models.Robot;
 
@@ -9,6 +9,7 @@ namespace Galaxy.Teams.Presentation.Helpers
     {
         public static RobotModel ToRobotModel(this Robot robot)
         {
+            if(robot == null) return new RobotModel();
             return new RobotModel
             {
                 Id = robot.Id.ToString(),

@@ -50,6 +50,13 @@ namespace Galaxy.Teams.Core.Services
             return await _repository.UpdateAsync(model);
         }
 
+        public async Task<ActionResponse> UpdateStatusAsync(Captain model)
+        {
+            var captain = _repository.GetById(model.Id);
+            captain.Status = model.Status;
+            return await _repository.UpdateAsync(model);
+        }
+
         public async Task<List<Captain>> GetAllAsync()
         { 
             var captains = await _repository.GetAsync(x=> x.Status != CaptainStatus.Deleted, x => x.OrderByDescending(y => y.UpdatedAt));

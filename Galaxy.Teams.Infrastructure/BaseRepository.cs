@@ -53,7 +53,6 @@ namespace Galaxy.Teams.Infrastructure
         {
             try
             {
-               // throw new Exception();
                 await _dbSet.AddAsync(entity);
                 await _context.SaveChangesAsync();
                 return new ActionResponse();

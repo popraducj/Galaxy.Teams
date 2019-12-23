@@ -31,6 +31,12 @@ namespace Galaxy.Teams.Presentation.Services
             var result = await _teamService.UpdateAsync(teamModel.ToTeam());
             return result.ToActionReplay();
         }
+        
+        public override async Task<ActionReplay> UpdateStatus(TeamModel teamModel, ServerCallContext context)
+        {
+            var result = await _teamService.UpdateStatusAsync(teamModel.ToTeam());
+            return result.ToActionReplay();
+        }
 
         public override async Task GetAll(Empty request, IServerStreamWriter<TeamModel> responseStream, ServerCallContext context)
         {

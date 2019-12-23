@@ -1,6 +1,6 @@
 ﻿syntax = "proto3";
 
-option csharp_namespace = "Galaxy.Robots.Presentation";
+option csharp_namespace = "Galaxy.Robots";
 
 package Teams;
 import "google/protobuf/empty.proto";
@@ -8,6 +8,7 @@ import "Protos/commonModels.proto";
 
 service Robot {
   rpc Update (RobotModel) returns (CommonModels.ActionReplay);
+  rpc UpdateStatus (RobotModel) returns (CommonModels.ActionReplay);
   rpc Add (RobotModel) returns (CommonModels.ActionReplay);
   rpc GetAll (google.protobuf.Empty) returns (stream RobotModel);
   rpc GetById (CommonModels.IdRequest) returns (RobotModel);

@@ -7,9 +7,12 @@ namespace Galaxy.Teams.Core.Models
     [Table("Shuttles")]
     public class Shuttle : Entity
     {
+        [Required]
         [Column(TypeName = "varchar(256)")]
         public string Name { get; set; }
+        [Required]
         public int MaxSpeed { get; set; }
+        [Required]
         [Column(TypeName = "varchar(256)")]
         public string Manufacturer { get; set; }
         [Column(TypeName = "varchar(256)")]

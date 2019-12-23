@@ -1,6 +1,7 @@
 ﻿using Galaxy.Teams.Core.Intefaces;
 using Galaxy.Teams.Infrastructure;
 using Galaxy.Teams.Presentation.Ioc;
+using Galaxy.Teams.Presentation.Middleware;
 using Galaxy.Teams.Presentation.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Galaxy.Teams.Presentation
 {
@@ -30,13 +32,15 @@ namespace Galaxy.Teams.Presentation
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory logger)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            
+            app.ConfigureExceptionHandler(logger.CreateLogger("Galaxy.Teams.GlobalLogger"));
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

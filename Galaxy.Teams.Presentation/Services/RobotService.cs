@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Galaxy.Robots.Presentation;
+using Galaxy.Robots;
 using Galaxy.Teams.Core.Intefaces;
 using Galaxy.Teams.Presentation.Helpers;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
-using Robot = Galaxy.Robots.Presentation.Robot;
+using Robot = Galaxy.Robots.Robot;
 
 namespace Galaxy.Teams.Presentation.Services
 {
@@ -31,6 +31,12 @@ namespace Galaxy.Teams.Presentation.Services
         public override async Task<ActionReplay> Update(RobotModel robotModel, ServerCallContext context)
         {
             var result = await _robotService.UpdateAsync(robotModel.ToRobot());
+            return result.ToActionReplay();
+        }
+        
+        public override async Task<ActionReplay> UpdateStatus(RobotModel robotModel, ServerCallContext context)
+        {
+            var result = await _robotService.UpdateStatusAsync(robotModel.ToRobot());
             return result.ToActionReplay();
         }
 

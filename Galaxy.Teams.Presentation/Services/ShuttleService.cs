@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Galaxy.Shuttles.Presentation;
+using Galaxy.Shuttles;
 using Galaxy.Teams.Core.Intefaces;
 using Galaxy.Teams.Presentation.Helpers;
 using Google.Protobuf.WellKnownTypes;

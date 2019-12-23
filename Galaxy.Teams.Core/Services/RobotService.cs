@@ -29,6 +29,13 @@ namespace Galaxy.Teams.Core.Services
             return await _repository.UpdateAsync(model);
         }
 
+        public async Task<ActionResponse> UpdateStatusAsync(Robot model)
+        {
+            var robot = _repository.GetById(model.Id);
+            robot.Status = model.Status;
+            return await _repository.UpdateAsync(model);
+        }
+
         public async Task<List<Robot>> GetAllAsync()
         { 
             var robots = await _repository.GetAsync(x=> x.Status != RobotStatus.Deleted, x => x.OrderByDescending(y => y.UpdatedAt));
