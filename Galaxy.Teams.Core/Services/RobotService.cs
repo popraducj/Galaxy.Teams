@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Galaxy.Teams.Core.Enums;
-using Galaxy.Teams.Core.Helpers;
 using Galaxy.Teams.Core.Intefaces;
 using Galaxy.Teams.Core.Models;
 
@@ -33,7 +32,7 @@ namespace Galaxy.Teams.Core.Services
         {
             var robot = _repository.GetById(model.Id);
             robot.Status = model.Status;
-            return await _repository.UpdateAsync(model);
+            return await _repository.UpdateAsync(robot);
         }
 
         public async Task<List<Robot>> GetAllAsync()

@@ -16,16 +16,13 @@ namespace Galaxy.Teams.Core.Services
         private readonly IService<Captain> _captainService;
         private readonly IService<Robot> _robotService;
         private readonly IService<Shuttle> _shuttleService;
-        private readonly ILogger<TeamService> _logger;
-
         public TeamService(IRepository<Team> repository, IService<Captain> captainService, IService<Robot> robotService,
-            IService<Shuttle> shuttleService, ILogger<TeamService> logger)
+            IService<Shuttle> shuttleService)
         {
             _repository = repository;
             _captainService = captainService;
             _robotService = robotService;
             _shuttleService = shuttleService;
-            _logger = logger;
         }
 
         public async Task<ActionResponse> AddAsync(Team model)

@@ -26,7 +26,7 @@ namespace Galaxy.Teams.Presentation.Helpers
         }
         public static Robot ToRobot(this RobotModel robot)
         {
-            return new Robot
+            var result =  new Robot
             {
                 Id = Guid.Parse(robot.Id),
                 Name = robot.Name,
@@ -34,11 +34,14 @@ namespace Galaxy.Teams.Presentation.Helpers
                 Manufacturer = robot.Manufacturer,
                 Model = robot.Model,
                 Year = robot.Year,
-                NextRevision = DateTime.Parse(robot.NextRevision),
                 TrustWorthyPercentage = robot.TrustWorthyPercentage,
                 FuelConsumptionPerDay = robot.FuelConsumptionPerDay,
                 UnitsCoveredInADay = robot.UnitsCoveredInADay
             };
+            if (!string.IsNullOrEmpty(robot.NextRevision))
+                result.NextRevision = DateTime.Parse(robot.NextRevision);
+
+            return result;
         }
     }
 }

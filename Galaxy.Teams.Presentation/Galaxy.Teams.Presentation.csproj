@@ -30,4 +30,8 @@
    <ProjectReference Include="..\Galaxy.Teams.Core\Galaxy.Teams.Core.csproj" />
    <ProjectReference Include="..\Galaxy.Teams.Infrastructure\Galaxy.Teams.Infrastructure.csproj" />
  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings*.json" CopyToOutputDirectory="Always"/>
+    <None Include="NLog*.config" CopyToOutputDirectory="Always"/>
+  </ItemGroup>
 </Project>
